@@ -12,3 +12,5 @@ class User(db.Model):
         self.username = username
         self.password = password
 
+    def get_by_username(username):
+        return User.query.filter_by(username=username).first()

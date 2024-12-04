@@ -12,8 +12,7 @@ def get_product():
         'id': product.id, 
         'name': product.name, 
         'price': product.price, 
-        'calories': product.calories, 
-        'cost': product.cost, 
+        'calories': product.calories,
         'profitability': product.profitability 
     } for product in list_produts]
     return json_response(response, "success", None)

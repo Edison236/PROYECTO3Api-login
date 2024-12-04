@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from databases.db import db,init_db
 from controllers.controller_product import product_bp
 from controllers.controller_ingredient import ingredient_bp
+from models.product import Product
 from flask_login import LoginManager
 import os 
 import secrets
@@ -17,7 +18,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db.init_app(app)
 init_db(app)
-login_manager.init_app(app)
+# login_manager.init_app(app)
 
 # Blueprint
 app.register_blueprint(product_bp)
@@ -25,6 +26,7 @@ app.register_blueprint(ingredient_bp)
 
 @app.route("/")
 def index():
+    Product.insert_data_products_default()
     return render_template("index.html")
 
 if __name__ == '__main__':    
